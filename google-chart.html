@@ -369,11 +369,13 @@ on the `html` tag of your document.
     },
 
     _draw: function(chart, data) {
-      try {
-        this._setDrawn(false);
-        chart.draw(data, this.options || {});
-      } catch(error) {
-        this.$.chartdiv.innerHTML = error;
+      if (chart && data) {
+        try {
+          this._setDrawn(false);
+          chart.draw(data, this.options || {});
+        } catch(error) {
+          this.$.chartdiv.innerHTML = error;
+        }
       }
     },
 
